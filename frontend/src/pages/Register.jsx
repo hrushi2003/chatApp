@@ -36,7 +36,7 @@ const Register = () => {
   const submitUser =() => {
        if((isValidEmail && isValidUser) && isvalidPassword){
         if((username !== "" && password !== "" ) && username !== ""){
-           axios.post('http://localhost:3000/register',{
+           axios.post('https://chat-app-self-five.vercel.app/register',{
             username,
             password,
             email
