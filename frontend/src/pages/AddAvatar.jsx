@@ -25,7 +25,7 @@ const AddAvatar = () => {
         const formData = new FormData();
         formData.append('image', profilePic);
         try{
-            await axios.post(`http://localhost:3000/avatar/${user._id}`,formData).then((res)=>{
+            await axios.post(`https://chat-app-self-five.vercel.app/avatar/${user._id}`,formData).then((res)=>{
                 navigate('/chat');
             });
        }catch(err){
@@ -38,7 +38,7 @@ const AddAvatar = () => {
                 const formData = new FormData();
                 formData.append('image',blob);
                 try{
-                    await axios.post(`http://localhost:3000/avatar/${user._id}`,formData).then((res)=>{
+                    await axios.post(`https://chat-app-self-five.vercel.app/avatar/${user._id}`,formData).then((res)=>{
                         navigate('/chat');
                     });
                   }catch(err){
@@ -54,7 +54,7 @@ const AddAvatar = () => {
                 const formData = new FormData();
                 formData.append('image',blob);
                 try{
-                    await axios.post(`http://localhost:3000/avatar/${user._id}`,formData).then((res)=>{
+                    await axios.post(`https://chat-app-self-five.vercel.app/avatar/${user._id}`,formData).then((res)=>{
                         navigate('/chat');
                     });
                   }catch(err){
@@ -75,7 +75,7 @@ const AddAvatar = () => {
     const headers = {
         Authorization : `Bearer ${token}`
     };
-      await axios.get("http://localhost:3000/register/avatar", {headers}).then((response) => {
+      await axios.get("https://chat-app-self-five.vercel.app/register/avatar", {headers}).then((response) => {
         SetUser(response.data.user);
       }).catch((err) => {
         console.log(err);
