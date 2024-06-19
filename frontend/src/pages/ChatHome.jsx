@@ -20,7 +20,7 @@ const ChatHome = () => {
       const headers = {
         Authorization : `Bearer ${token}`
       };
-      await axios.get("http://localhost:3000/chat/users", {headers}).then((response) => {
+      await axios.get("https://chat-app-self-five.vercel.app/chat/users", {headers}).then((response) => {
         console.log(response.data.user)
         setFriends(response.data.friends);
         SetUser(response.data.user);
