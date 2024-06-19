@@ -4,7 +4,7 @@ import cors from "cors";
 import { User } from "./models/users.js";
 import jwt  from "jsonwebtoken";
 const app = express();
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import { Image } from "./models/images.js";
 import bodyParser from "body-parser";
