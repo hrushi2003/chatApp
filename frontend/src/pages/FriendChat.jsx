@@ -22,7 +22,7 @@ const FriendChat = (props) => {
     useEffect(() => {
       const fetchChat = async () => {
         try{
-       const response =  await axios.post("http://localhost:3000/chat/chatHistory",{
+       const response =  await axios.post("https://chat-app-self-five.vercel.app/chat/chatHistory",{
         user1 : props.currUser,
         user2 : userData[0].username
       });
