@@ -3,7 +3,7 @@ import LoadingSpin from "react-loading-spin";
 import {io} from "socket.io-client";
 import axios from 'axios';
 import {v4 as uuidv4} from "uuid";
-const socket = io('http://localhost:3000',{
+const socket = io('https://chat-app-self-five.vercel.app',{
     auth: {
       serverOffset: 0
     },
