@@ -28,7 +28,7 @@ const io = new Server(server,{
 });
 
 app.use(cors({
-    origin: ["https://chat-app-self-five.vercel.app"],
+    origin: ["https://chat-app-5g1i.vercel.app"],
     methods: ["GET", "POST"]
 }));
 
