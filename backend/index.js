@@ -2,7 +2,7 @@ import express from "express";
 import {connect} from "./connection.js";
 import cors from "cors";
 import { User } from "./models/users.js";
-import jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 const app = express();
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
