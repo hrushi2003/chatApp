@@ -20,17 +20,10 @@ import { Conversation } from "./models/Conversation.js";
 
 const server = createServer(app);
 const io = new Server(server,{
-    cors : {
-        origin : ["https://chat-app-5g1i.vercel.app","https://chat-app-self-five.vercel.app"],
-        methods: ["GET", "POST"],
-        allowedHeaders: ["Authorization"]
-    },
     connectionStateRecovery: {}
 });
 
-app.use(cors({
-    origin: ["https://chat-app-5g1i.vercel.app"]
-}));
+app.use(cors());
 
 const users = {};
 
