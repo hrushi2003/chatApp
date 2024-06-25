@@ -21,7 +21,7 @@ import { Conversation } from "./models/Conversation.js";
 const server = createServer(app);
 const io = new Server(server,{
      cors : {
-          origin : "https://chat-app-5g1i.vercel.app"
+          origin : "*"
     },
     connectionStateRecovery: {}
 });
