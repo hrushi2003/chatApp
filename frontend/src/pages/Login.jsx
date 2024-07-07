@@ -10,7 +10,7 @@ const Login = () => {
   const [password,setPassword] = useState('');
   const userLogin = () => {
      if(username !== "" && password !== ""){
-        axios.post('https://chat-app-self-five.vercel.app/login',{username,password}).then((response) => {
+        axios.post('https://chat-app-lovat-delta.vercel.app/login',{username,password}).then((response) => {
           console.log("Successfully logged in",response.data);
           localStorage.setItem('token', response.data.token);
           navigate('/chat');
