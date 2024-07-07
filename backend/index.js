@@ -155,7 +155,6 @@ io.on("connection", async socket => {
 
 
 app.use(bodyParser.json());
-app.use(cors());
 app.use(express.json());
 connect();
 
