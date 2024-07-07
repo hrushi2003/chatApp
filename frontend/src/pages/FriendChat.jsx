@@ -3,7 +3,7 @@ import LoadingSpin from "react-loading-spin";
 import {io} from "socket.io-client";
 import axios from 'axios';
 import {v4 as uuidv4} from "uuid";
-const socket = io('https://chat-app-self-five.vercel.app',{
+const socket = io('https://chat-app-lovat-delta.vercel.app',{
     auth: {
       serverOffset: 0
     },
@@ -22,7 +22,7 @@ const FriendChat = (props) => {
     useEffect(() => {
       const fetchChat = async () => {
         try{
-       const response =  await axios.post("https://chat-app-self-five.vercel.app/chat/chatHistory",{
+       const response =  await axios.post("https://chat-app-lovat-delta.vercel.app/chat/chatHistory",{
         user1 : props.currUser,
         user2 : userData[0].username
       });
