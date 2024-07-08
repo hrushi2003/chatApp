@@ -27,11 +27,11 @@ const corsOrigin ={
 }
 app.use(cors(corsOrigin));
 app.use(express.json());
-
+// ["https://chat-app-5g1i.vercel.app","https://chat-app-lovat-delta.vercel.app"]
 const server = createServer(app);
 const io = new Server(server,{
      cors : {
-          origin : ["https://chat-app-5g1i.vercel.app","https://chat-app-lovat-delta.vercel.app"],
+          origin : "*",
           credentials:true,            
           optionSuccessStatus:200
     },
