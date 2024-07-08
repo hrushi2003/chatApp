@@ -3,10 +3,11 @@ import LoadingSpin from "react-loading-spin";
 import {io} from "socket.io-client";
 import axios from 'axios';
 import {v4 as uuidv4} from "uuid";
-const socket = io('wss://chat-app-lovat-delta.vercel.app',{
+const socket = io('https://chat-app-lovat-delta.vercel.app',{
     auth: {
       serverOffset: 0
     },
+    path : '/socket',
     transports: ['websocket','polling', 'flashsocket'],
     withCredentials: true,
     ackTimeout: 10000,
