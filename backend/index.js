@@ -157,6 +157,19 @@ io.on("connection", async socket => {
 
 
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://chat-app-5g1i.vercel.app");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
+
+app.options('*', (req, res) => {
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.sendStatus(200);
+});
 app.use(cors());
 app.use(express.json());
 connect();
