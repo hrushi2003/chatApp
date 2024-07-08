@@ -7,6 +7,7 @@ const socket = io('https://chat-app-lovat-delta.vercel.app',{
     auth: {
       serverOffset: 0
     },
+    transports: ['websocket', 'polling', 'flashsocket'],
     withCredentials: true,
     ackTimeout: 10000,
     retries: 3,
