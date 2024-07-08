@@ -32,7 +32,7 @@ const server = createServer(app);
 const io = new Server(server,{
     path : '/socket',
     wssEngine : ['ws','wss'],
-    transport : ['websocket','polling'],
+    transports : ['websocket','polling'],
      cors : {
           origin : "*",
           credentials:true,            
