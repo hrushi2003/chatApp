@@ -23,6 +23,8 @@ const io = new Server(server,{
      cors : {
           origin : "*"
     },
+    allowedHeaders: ["my-custom-header"],
+    credentials: true,
     connectionStateRecovery: {}
 });
 
