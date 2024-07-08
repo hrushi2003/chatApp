@@ -18,32 +18,18 @@ import {Server} from "socket.io";
 import { Chat } from "./models/chatHistory.js";
 import { Conversation } from "./models/Conversation.js";
 
+
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
+
 const server = createServer(app);
 const io = new Server(server,{
      cors : {
           origin : "https://chat-app-5g1i.vercel.app"
     },
-    allowedHeaders: ["my-custom-header"],
-    credentials: true,
     connectionStateRecovery: {}
 });
-
-app.use(bodyParser.json());
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://chat-app-5g1i.vercel.app");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
-});
-
-app.options('*', (req, res) => {
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.sendStatus(200);
-});
-app.use(cors());
-app.use(express.json());
 
 const users = {};
 
