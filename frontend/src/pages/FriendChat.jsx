@@ -7,10 +7,6 @@ const socket = io('https://chat-app-lovat-delta.vercel.app',{
     auth: {
       serverOffset: 0
     },
-     withCredentials: true,
-     extraHeaders: {
-        "my-custom-header": "abcd"
-    },
     ackTimeout: 10000,
     retries: 3,
 });
