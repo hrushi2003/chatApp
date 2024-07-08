@@ -20,7 +20,12 @@ import { Conversation } from "./models/Conversation.js";
 
 
 app.use(bodyParser.json());
-app.use(cors());
+const corsOrigin ={
+    origin:'https://chat-app-5g1i.vercel.app',
+    credentials:true,            
+    optionSuccessStatus:200
+}
+app.use(cors(corsOrigin));
 app.use(express.json());
 
 const server = createServer(app);
