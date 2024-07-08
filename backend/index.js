@@ -30,6 +30,9 @@ app.use(express.json());
 // ["https://chat-app-5g1i.vercel.app","https://chat-app-lovat-delta.vercel.app"]
 const server = createServer(app);
 const io = new Server(server,{
+    path : '/socket',
+    wssEngine : ['ws','wss'],
+    transport : ['websocket','polling'],
      cors : {
           origin : "*",
           credentials:true,            
