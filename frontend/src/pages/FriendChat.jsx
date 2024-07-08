@@ -3,7 +3,7 @@ import LoadingSpin from "react-loading-spin";
 import {io} from "socket.io-client";
 import axios from 'axios';
 import {v4 as uuidv4} from "uuid";
-const socket = io('https://chat-app-lovat-delta.vercel.app',{
+const socket = io('ws://chat-app-lovat-delta.vercel.app',{
     auth: {
       serverOffset: 0
     },
