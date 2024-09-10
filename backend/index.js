@@ -21,7 +21,7 @@ import { Conversation } from "./models/Conversation.js";
 
 app.use(bodyParser.json());
 const corsOrigin ={
-    origin:'https://chat-app-5g1i.vercel.app',
+    origin:'*',
     credentials:true,            
     optionSuccessStatus:200
 }
@@ -59,6 +59,17 @@ io.on("connection", async socket => {
         users[username] = socket.id; 
         callback();
     });
+    socket.on("getOnlineInfo",async (username,callback) => {
+        const userPresent = users[username];
+        if(!userPresent){
+            socket.to(users[socket.username]).emit('onlineInfo',"offline");
+        }
+        else{
+            socket.to(users[socket.username]).emit('onlineInfo',"online");
+        }
+        callback();
+    })
+
     socket.on("private", async ({recipient,message,sender,Unique},callback) => {
         const id = users[recipient];
         console.log("iam at the starting");

@@ -3,7 +3,7 @@ import LoadingSpin from "react-loading-spin";
 import {io} from "socket.io-client";
 import axios from 'axios';
 import {v4 as uuidv4} from "uuid";
-const socket = io('https://chat-app-lovat-delta.vercel.app',{
+const socket = io('http://localhost:3000',{
     auth: {
       serverOffset: 0
     },
@@ -19,13 +19,13 @@ const FriendChat = (props) => {
     const [history,setHistory] = useState([]);
     const [messages,setMessages] = useState([]);
     const [loading,setLoading] = useState(false);
-    const [online,setOnline] = useState(true);
+    const [online,setOnline] = useState(false);
     const scrollRef = useRef();
     const userData = props.details.filter(user => user.id === props.userId);
     useEffect(() => {
       const fetchChat = async () => {
         try{
-       const response =  await axios.post("https://chat-app-lovat-delta.vercel.app/chat/chatHistory",{
+       const response =  await axios.post("http://localhost:3000/chat/chatHistory",{
         user1 : props.currUser,
         user2 : userData[0].username
       });
@@ -47,6 +47,19 @@ const FriendChat = (props) => {
       setUserInp("");
       setLoading(false);
     };*/
+    const getOnlineInfo = async () => {
+     socket.emit('getOnlineInfo', userData[0].currUser);
+     socket.on('onlineInfo', (data) => {
+        console.log(data);
+        setOnline(true);
+      });
+    }
+    useEffect(() => {
+     const interval = setInterval(getOnlineInfo,10000);
+      return () => {
+        clearInterval(interval);
+      }
+    },[props.currUser]);
     useEffect(() => {
       socket.emit('authenticate',props.currUser);
         socket.on("connect_error", (err) => {

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Register = () => {
   const navigate = useNavigate();
   const [username,setUsername] = useState('');
@@ -36,7 +39,7 @@ const Register = () => {
   const submitUser =() => {
        if((isValidEmail && isValidUser) && isvalidPassword){
         if((username !== "" && password !== "" ) && username !== ""){
-           axios.post('https://chat-app-lovat-delta.vercel.app/register',{
+           axios.post('http://localhost:3000/register',{
             username,
             password,
             email
@@ -45,17 +48,35 @@ const Register = () => {
             console.log(localStorage.getItem("token"));
             navigate('/register/avatar');
           }).catch((err) => {
-            console.log(err);
-            alert("Enter valid details")
+            toast.error("Enter valid details",{
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
            // navigate('/register');
           })
           return;
         }
        }
-       alert("Enter valid details");
+       toast.error("Enter valid details",{
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+       });
   }
   return (
     <div className ='w-auto h-auto'>
+          <ToastContainer />
         <img
         className='mx-auto w-[100px] h-[100px] bg-chat-bg flex mt-[120px]'
          src = {logo} alt='logo' />

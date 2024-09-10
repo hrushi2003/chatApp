@@ -11,7 +11,7 @@ const AiChat = () => {
         if(userInp){
           setLoading(true);
           console.log(userInp);
-          await axios.get(`https://chat-app-lovat-delta.vercel.app/chat/ai/${userInp}`).then((response) => {
+          await axios.get(`http://localhost:3000/chat/ai/${userInp}`).then((response) => {
             setMessages([...messages,{
               sender : userInp,
               bot: response.data.bot

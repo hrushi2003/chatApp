@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import mlogo from './male.jpg';
 import glogo from "./female.jpg";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const AddAvatar = () => {
     const [gender,setGender] = useState("M");
     const inpRef = useRef(null);
@@ -25,7 +28,7 @@ const AddAvatar = () => {
         const formData = new FormData();
         formData.append('image', profilePic);
         try{
-            await axios.post(`https://chat-app-lovat-delta.vercel.app/avatar/${user._id}`,formData).then((res)=>{
+            await axios.post(`http://localhost:3000/avatar/${user._id}`,formData).then((res)=>{
                 navigate('/chat');
             });
        }catch(err){
@@ -38,14 +41,32 @@ const AddAvatar = () => {
                 const formData = new FormData();
                 formData.append('image',blob);
                 try{
-                    await axios.post(`https://chat-app-lovat-delta.vercel.app/avatar/${user._id}`,formData).then((res)=>{
+                    await axios.post(`http://localhost:3000/avatar/${user._id}`,formData).then((res)=>{
                         navigate('/chat');
                     });
                   }catch(err){
-                    console.error(err);
+                    toast.error("Error occured in uploading image, Try again!",{
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
                 }    
             }).catch((err) => {
-                alert("image uploading failed, try again!");
+                toast.error("Error occured in uploading image, Try again!",{
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
         }
         else{
@@ -54,7 +75,7 @@ const AddAvatar = () => {
                 const formData = new FormData();
                 formData.append('image',blob);
                 try{
-                    await axios.post(`https://chat-app-lovat-delta.vercel.app/avatar/${user._id}`,formData).then((res)=>{
+                    await axios.post(`http://localhost:3000/avatar/${user._id}`,formData).then((res)=>{
                         navigate('/chat');
                     });
                   }catch(err){
@@ -75,7 +96,7 @@ const AddAvatar = () => {
     const headers = {
         Authorization : `Bearer ${token}`
     };
-      await axios.get("https://chat-app-lovat-delta.vercel.app/register/avatar", {headers}).then((response) => {
+      await axios.get("http://localhost:3000/register/avatar", {headers}).then((response) => {
         SetUser(response.data.user);
       }).catch((err) => {
         console.log(err);
@@ -89,6 +110,7 @@ const AddAvatar = () => {
     <div 
     className='w-[350px] mb-4 h-max border shadow-2xl p-4 border-green-200 flex flex-col mt-[200px] rounded-xl bg-gradient-to-b from-blue-500 to-green-300 mx-auto'
     >
+        <ToastContainer />
     <div className='w-full h-[50%] flex flex-col mx-auto my-auto'>
        <img 
        className='mx-auto border-[3px] cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 border-blue-400 rounded-full w-[200px] h-[200px] shadow-2xl'
