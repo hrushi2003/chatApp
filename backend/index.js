@@ -25,7 +25,6 @@ const corsOrigin ={
     credentials:true,            
     optionSuccessStatus:200
 }
-app.use(cors(corsOrigin));
 app.use(express.json());
 // ["https://chat-app-5g1i.vercel.app","https://chat-app-lovat-delta.vercel.app"]
 const server = createServer(app);
@@ -40,7 +39,7 @@ const io = new Server(server,{
     },
     connectionStateRecovery: {}
 });
-
+app.use(cors(corsOrigin));
 const users = {};
 
 io.on("connection", async socket => {
