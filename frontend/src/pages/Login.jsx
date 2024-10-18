@@ -15,7 +15,7 @@ const Login = () => {
   const [password,setPassword] = useState('');
   const userLogin = () => {
      if(username !== "" && password !== ""){
-        axios.post('http://localhost:3000/login',{username,password}).then((response) => {
+        axios.post('https://chatapp-yf38.onrender.com/login',{username,password}).then((response) => {
           localStorage.setItem('token', response.data.token);
           navigate('/chat');
         }).catch((err) => {
