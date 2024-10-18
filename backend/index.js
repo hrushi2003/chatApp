@@ -39,7 +39,7 @@ const io = new Server(server,{
     },
     connectionStateRecovery: {}
 });
-app.use(cors(corsOrigin));
+app.use(cors());
 const users = {};
 
 io.on("connection", async socket => {
