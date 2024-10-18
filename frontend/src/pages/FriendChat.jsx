@@ -3,7 +3,7 @@ import LoadingSpin from "react-loading-spin";
 import {io} from "socket.io-client";
 import axios from 'axios';
 import {v4 as uuidv4} from "uuid";
-const socket = io('http://localhost:3000',{
+const socket = io('https://chatapp-yf38.onrender.com',{
     auth: {
       serverOffset: 0
     },
@@ -25,7 +25,7 @@ const FriendChat = (props) => {
     useEffect(() => {
       const fetchChat = async () => {
         try{
-       const response =  await axios.post("http://localhost:3000/chat/chatHistory",{
+       const response =  await axios.post("https://chatapp-yf38.onrender.com/chat/chatHistory",{
         user1 : props.currUser,
         user2 : userData[0].username
       });
