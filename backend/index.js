@@ -330,6 +330,7 @@ app.get('/chat/users',async (req,res) => {
     if(!user){
         return res.status(400).send("Unauthorized");
     }
+    console.log(user);
     const friends = await User.find({_id:{$ne:user._id}}).populate({path:'imageId'}).select([
         'username',
         'email',
@@ -344,6 +345,7 @@ app.get('/chat/users',async (req,res) => {
         const base64Data = friend.imageId.data.toString('base64');
         return {id,username,email,"imageData":base64Data}
     });
+    console.log(upDatedData);
     return res.status(200).json({"friends":upDatedData,"user":user});
     }catch(err){
         console.log(err);
