@@ -338,7 +338,7 @@ app.get('/chat/users',async (req,res) => {
         '_id',
         'contentType'
     ]).exec();
-    const upDatedData = friends.map(friend => {
+    const upDatedData = friends.filter(friend => friend.imageId && friend.imageId.data).map(friend => {
         const username = friend.username;
         const email = friend.email;
         const id = friend._id;
